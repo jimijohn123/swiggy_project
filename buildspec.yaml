@@ -112,10 +112,8 @@ phases:
       - echo "DOCKER_REGISTRY_URL - $DOCKER_REGISTRY_URL"
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
       - ls -al
-      - IMAGE_TAG="${DOCKER_REGISTRY_URL}/${DOCKER_REGISTRY_USERNAME}/swiggy:latest"
-      - echo "docker build -t $IMAGE_TAG ."
-      - docker build -t "$IMAGE_TAG" .
-      - docker push "$IMAGE_TAG"
+      - docker build -t "$DOCKER_REGISTRY_USERNAME/swiggy:latest" .
+      - docker push "$DOCKER_REGISTRY_USERNAME/swiggy:latest"
 
   post_build:
     commands:
