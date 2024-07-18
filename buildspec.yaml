@@ -113,7 +113,7 @@ phases:
       - ls -al
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
       - docker build -t "$DOCKER_REGISTRY_USERNAME/swiggy:latest" .
-      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+      - echo "Pushing Docker image"
       - docker push "$DOCKER_REGISTRY_USERNAME/swiggy:latest"
 
   post_build:
